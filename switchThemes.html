@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Theme switcher</title>
+        <link rel="stylesheet" href="stylesheets/day.css">
+        <link rel="stylesheet" href="stylesheets/application.css">
+        <script src="js/libs/jquery-1.10.2.min.js"></script>
+        <script src="js/switcher.js"></script>
+    </head>
+    
+    <body>
+        <button data-file="day">День</button>
+        <button data-file="night">Ночь</button>
+        
+        <dl>
+            <dt>What are your hours?</dt>
+            <dd>We are open 24/7.</dd>
+            <dt>What are your hours?</dt>
+            <dd>We are open 24/7.</dd>
+            <dt>What are your hours?</dt>
+            <dd>We are open 24/7.</dd>
+            <dt>What are your hours?</dt>
+            <dd>We are open 24/7.</dd>
+            <dt>What are your hours?</dt>
+            <dd>We are open 24/7.</dd>
+        </dl>
+    </body>
+    <script>
+        (function() {
+            //Switcher
+            var link = $('link');
+            $('button').on('click', function() {
+                var $this = $(this), // stash or cash obj
+                    stylesheet = $(this).data('file');
+                    
+                link.attr('href', 'stylesheets/' + stylesheet + '.css');
+                
+                $this
+                    .siblings('button')
+                        .removeAttr('disabled')
+                    .end()
+                    .attr('disabled', 'disabled');
+            });
+            
+            // toggler
+            $('dd').filter(':nth-child(n+4)').hide();
+            // speed up with callback function: choose parent and specify in the event handler which element the function should be applied to
+            $('dl').on('mouseenter','dt', function() {
+                
+                $(this)
+                    .next()
+                        .slideDown(200)
+                        .siblings('dd')
+                            .slideUp(300);
+            });
+        })(); 
+        
+        
+    </script>
+</html>
+
+
+
+

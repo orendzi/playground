@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>FinLog</title>
+        <link rel="stylesheet" href="stylesheets/application.css">
+        <script src="js/libs/jquery-1.10.2.min.js"></script>
+        <script src="js/switcher.js"></script>
+    </head>
+    
+    <body>
+        <h1>FinLog</h1>
+        
+        <h3>Add income</h3>
+        <form id="income">
+          <div>
+            <label>Name</label>
+            <input type="text" id="x" placeholder="x">
+          </div>
+          <div>
+            <label>Amount</label>
+            <input type="text" id="money-income" placeholder="x">
+          </div>
+          <div>
+            <label>Currency</label>
+            <select>
+                <option title="US dollar">&#36;</option>
+                <option title="UK pound">&#163;</option>
+                <option title="Euro">&#128;</option>
+                <option title="Ruble">&#8381;</option>
+            </select>
+          </div>
+          <div>
+            <label>Date of income</label>
+            <input type="datetime" id="date-income">
+          </div>
+          <div>
+            <label>Source</label>
+            <input list="income-source" placeholder="work">
+            <datalist id="income-source">
+                <optgroup>Primary work
+                    <option>Full-time job</option>
+                    <option>Private project</option>
+                </optgroup>
+                <optgroup>Secondary work
+                    <option>Part-time job</option>
+                    <option>Freelance</option>
+                </optgroup>
+                <optgroup>Passive income
+                    <option>Options</option>
+                    <option>Futures</option>
+                    <option>Shares</option></option>
+                    <option>Bonds</option>
+                    <option>Bank deposits</option>
+                    <option>Mutual funds</option>
+                </optgroup>
+                <optgroup>Other
+                    <option>Credit</option>
+                    <option>Loan</option>
+                </optgroup>
+            </datalist>
+          </div>
+          <div>
+            <label>Repeats?</label>
+            <input type="checkbox" id="repeat-income">
+          </div>
+ 
+          <input type="submit" id="res">
+        </form>
+        
+        
+        
+        <!--<h3>Add expense</h3>-->
+        <!--<form id="expense">-->
+        <!--  <label>Enter your num:</label>-->
+        <!--  <input type="text" id="x" placeholder="x">-->
+        <!--  <input type="text" id="y" placeholder="y">-->
+        <!--  <button id="res">Count sum</button>-->
+        <!--</form>-->
+        <!--TODO! log every result in table.-->
+        
+    </body>
+    <script>
+        (function() {
+            // 1. check validation
+            // 2. on first submit prompt if you like to log your results? - rethink.
+            // 3. on first submit add table
+            // 4. on any submit add all the form fields in td
+            // 5. when there are more than 1 notes in table - add button to look in graphical form (visulization)
+            // 6. add expenses the same way + use tabs probably
+            // 7. do math according to financial laws =) let see budget, capital, etc. and...
+            // 8. create basic planning
+            
+            $(document).scroll(setMenuPosition)
+  
+            function setMenuPosition() {
+            
+                var delta = $(window).scrollTop() - $("#thead").offset().top;
+                var $element = $("#thead th");
+                var x = 0;
+                var y = delta > 0 ? delta - 2 : 0;
+        
+                var translation = "translate(" + x + "px," + y + "px)"
+                $element.css({
+                    "transform": translation,
+                    "-ms-transform": translation,
+                    "-webkit-transform": translation,
+                    "-o-transform": translation,
+                    "-moz-transform": translation,
+                    "background": "white"
+                });
+            }
+        //   var x, y, sum;
+          
+        //   var numField = $('input');
+          
+        //   numField.on('change', function () {
+        //     if ($(this).attr("id") === "x") {
+        //         x = parseInt($(this).val(), 10);
+        //         // alert(jQuery.type(x));
+        //     } else {
+        //         y = parseInt($(this).val(), 10);
+        //     }
+        //   });
+
+        //   $("#res").on('click', function () {
+        //     if (x !== undefined && y !== undefined) {
+        //         Counter(x, y);
+        //         alert('Sum of the entered nums = ' + sum);
+        //     } else {
+        //         alert('Woops, have you entered the numbers? Try again please.');
+        //     }
+        //   }); 
+          
+        //   function Counter () {
+        //     sum = x + y;
+        //   }
+  
+  
+    /** Tabs for the settings page */
+    this.tabSwitcher = function() {
+        var tabsHeader = $('#settings-tabs h3');
+        var settingsForm = $('#form-settings .form-holder');
+
+        tabsHeader.on('click', function() {
+                var $this = $(this);
+                tabsHeader.removeClass('active');
+                $this.addClass('active');
+                var hash = $this.find('a').attr('href');
+                $this.parent().siblings(':not(#settings-tabs)').hide().end().siblings('div'+hash).show();
+
+                return false;
+            });
+
+        if (settingsForm.has('ul.error-field')) {
+            var errorTab = settingsForm.find('> div').has('ul.error-field').attr('id');
+            tabsHeader.find('a[href="#' + errorTab + '"]').parent().trigger('click');
+        }
+        else {
+            tabsHeader.filter(':first').trigger('click');
+        }
+    };
+
+        })(); 
+        
+        
+    </script>
+</html>
+
+
+
+

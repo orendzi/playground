@@ -1,0 +1,14 @@
+body {
+    background: black;
+}
+
+button {
+    width: 100px;
+    height: 30px;
+    vertical-align: middle;
+    text-align: center;
+    display: inline;
+    margin: 20px;
+    background: blue;
+    color: yellow;
+}

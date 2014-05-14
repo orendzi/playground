@@ -1,0 +1,25 @@
+/* line 1, ../sass/application.sass */
+dt {
+  cursor: pointer;
+  font-weight: bold;
+  height: 30px;
+  font-size: 16pt;
+  text-align: center;
+  background: gray;
+  vertical-align: middle;
+  line-height: 30px;
+}
+
+/* line 11, ../sass/application.sass */
+dd {
+  font-size: 12pt;
+  text-align: center;
+  height: 30px;
+  vertical-align: middle;
+}
+
+/* line 17, ../sass/application.sass */
+dl {
+  width: 300px;
+  margin: 70px 30px;
+}

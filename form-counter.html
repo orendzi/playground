@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sum counter</title>
+        <link rel="stylesheet" href="stylesheets/day.css">
+        <link rel="stylesheet" href="stylesheets/application.css">
+        <script src="js/libs/jquery-1.10.2.min.js"></script>
+        <script src="js/switcher.js"></script>
+    </head>
+    
+    <body>
+        <form>
+          <label>Enter your num:</label>
+          <input type="text" id="x" placeholder="x">
+          <input type="text" id="y" placeholder="y">
+          <button id="res">Count sum</button>
+        </form>
+        
+        <!--TODO! log every result in table.-->
+    </body>
+    <script>
+        (function() {
+  
+          var x, y, sum;
+          
+          var numField = $('input');
+          
+          numField.on('change', function () {
+            if ($(this).attr("id") === "x") {
+                x = parseInt($(this).val(), 10);
+                // alert(jQuery.type(x));
+            } else {
+                y = parseInt($(this).val(), 10);
+            }
+          });
+
+          $("#res").on('click', function () {
+            if (x !== undefined && y !== undefined) {
+                Counter(x, y);
+                alert('Sum of the entered nums = ' + sum);
+            } else {
+                alert('Woops, have you entered the numbers? Try again please.');
+            }
+          }); 
+          
+          function Counter () {
+            sum = x + y;
+          }
+  
+
+        })(); 
+        
+        
+    </script>
+</html>
+
+
+
+
